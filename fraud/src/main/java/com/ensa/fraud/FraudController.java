@@ -1,6 +1,7 @@
 package com.ensa.fraud;
 
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +14,7 @@ import java.util.List;
 @Slf4j
 @RequestMapping("api/v1/frauds")
 @AllArgsConstructor
+
 public class FraudController {
     private final FraudService fraudService;
 

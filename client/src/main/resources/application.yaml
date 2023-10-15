@@ -4,6 +4,9 @@ server:
 
 
 spring:
+  sleuth:
+    sampler:
+      probability: 1.0
   datasource:
     url: jdbc:mysql://localhost:3366/client
     username: root
@@ -26,6 +29,11 @@ spring:
       addresses: localhost:5672
   profiles:
     active: dev
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
 
 eureka:
   client:

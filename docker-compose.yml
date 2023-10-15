@@ -1,18 +1,4 @@
 services:
-  postgres:
-    container_name: postgres
-    image: postgres
-    environment:
-      POSTGRES_USER: amigoscode
-      POSTGRES_PASSWORD: password
-      PGDATA: /data/postgres
-    volumes:
-      - postgres:/data/postgres
-    ports:
-      - "5432:5432"
-    networks:
-      - postgres
-    restart: unless-stopped
   pgadmin:
     container_name: pgadmin
     image: dpage/pgadmin4
@@ -28,14 +14,24 @@ services:
       - postgres
     restart: unless-stopped
   zipkin:
-    image: openzipkin/zipkin
-    container_name: zipkin
+    image: ghcr.io/openzipkin/zipkin-slim:latest
+    container_name: zipkinContainer
+    # Environment settings are defined here https://github.com/openzipkin/zipkin/blob/master/zipkin-server/README.md#environment-variables
+    environment:
+      - STORAGE_TYPE=mem
+      # Point the zipkin at the storage backend
+      - MYSQL_HOST=mysql
+      # Uncomment to enable self-tracing
+      # - SELF_TRACING_ENABLED=true
+      # Uncomment to increase heap size
+      # - JAVA_OPTS=-Xms128m -Xmx128m -XX:+ExitOnOutOfMemoryError
     ports:
-      - "9411:9411"
-    networks:
-      - spring
+      # Port used for the Zipkin UI and HTTP Api
+      - 9411:9411
+    # Uncomment to enable debug logging
+    # command: --logging.level.zipkin2=DEBUG
   rabbitmq:
-    image: rabbitmq:3.9.11-management-alpine
+    image: rabbitmq:management
     container_name: rabbitmq
     ports:
       - "5672:5672"

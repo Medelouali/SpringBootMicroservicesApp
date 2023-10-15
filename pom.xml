@@ -16,6 +16,9 @@
     <module>client</module>
     <module>fraud</module>
     <module>demo-eureka-server</module>
+    <module>notifications</module>
+    <module>api-gateway</module>
+    <module>amqp</module>
   </modules>
 
   <properties>
@@ -47,6 +50,7 @@
   </dependencyManagement>
 
   <dependencies>
+
     <dependency>
       <groupId>org.springframework.cloud</groupId>
       <artifactId>spring-cloud-starter-openfeign</artifactId>
@@ -62,6 +66,18 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-loadbalancer</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.micrometer</groupId>
+      <artifactId>micrometer-tracing-bridge-brave</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.zipkin.reporter2</groupId>
+      <artifactId>zipkin-reporter-brave</artifactId>
     </dependency>
   </dependencies>
 

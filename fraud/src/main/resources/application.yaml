@@ -18,6 +18,11 @@ spring:
     database-platform: org.hibernate.dialect.MySQLDialect
   application:
     name: fraud
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
 
 eureka:
   client:

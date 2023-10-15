@@ -14,9 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 public class ClientService {
     private final ClientRepository clientRepository;
-    private final RestTemplate restTemplate;
-    @Autowired
-    private FeignClientInterface feignClientInterface;
+    private final FeignClientInterface feignClientInterface;
 
     public List<Client> getClients(){
         return this.clientRepository.findAll();

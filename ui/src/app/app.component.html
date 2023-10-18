@@ -1,0 +1,19 @@
+<section class="frauds">
+  <div class="fraud__card" *ngFor="let fraud of frauds">
+      <h2>{{ fraud.title }}</h2>
+      <div class="card__footer">
+          <div class="is__flagged">
+            {{fraud.isFlagged ? "Flagged": "Has Been Flagged"}}
+          </div>
+          <div class="card__actions">
+            <button class="btn btn-primary" (click)="editFraud(fraud.id)">Edit</button>
+            <button class="btn btn-danger" (click)="deleteFraud(fraud.id)">Delete</button>
+            <button class="btn btn-success" (click)="flagFraud(fraud.id)">Flag</button>
+            <button class="btn btn-warning" (click)="flagFraud(fraud.id)">Unflag</button>
+          </div>
+      </div>
+  </div>
+  <div *ngIf="isModalOpen" class="modal">
+    {{message}}
+  </div>
+</section>
